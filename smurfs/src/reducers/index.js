@@ -15,7 +15,6 @@ import {
   UPDATING_SMURF_FAILURE,
   DELETING_SMURF_FAILURE
 } from "../actions";
-import { REFUSED } from "dns";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -54,7 +53,7 @@ const reducer = (state = initialState, action) => {
         error: null,
         fetchingSmurfs: true
       };
-    case ADDING_DATA_START:
+    case ADDING_SMURF_START:
       return {
         ...state,
         error: null,
