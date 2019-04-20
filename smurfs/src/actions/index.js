@@ -34,7 +34,7 @@ export const getSmurfs = () => dispatch => {
     });
 };
 
-export const addSmurf = (smurf = dispatch => {
+export const addSmurf = smurf => dispatch => {
   dispatch({ type: ADDING_SMURF_START });
   return axios
     .post(url, smurf)
@@ -47,7 +47,7 @@ export const addSmurf = (smurf = dispatch => {
     .catch(err => {
       dispatch({ type: ADDING_SMURF_FAILURE, payload: err.response });
     });
-});
+};
 
 export const deleteSmurf = id => dispatch => {
   dispatch({ type: DELETING_SMURF_START });

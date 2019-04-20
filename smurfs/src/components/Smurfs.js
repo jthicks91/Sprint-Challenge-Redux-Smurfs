@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 import { getSmurfs } from "../actions";
 
-import "../App.css";
+import "./App.css";
 
 class Smurfs extends Component {
   componentDidMount() {
