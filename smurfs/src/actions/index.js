@@ -12,13 +12,14 @@ export const ADDING_SMURF_START = "ADDING_SMURF_START";
 export const ADDING_SMURF_SUCCESS = "ADDING_SMURF_SUCCESS";
 export const ADDING_SMURF_FAILURE = "ADDING_SMURF_FAILURE";
 
-// export const UPDATING_SMURF_START = "UPDATING_SMURF_START";
-// export const UPDATING_SMURF_SUCCESS = "UPDATING_SMURF_SUCCESS";
-// export const UPDATING_SMURF_FAILURE = "UPDATING_SMURF_FAILURE";
+export const UPDATING_SMURF_START = "UPDATING_SMURF_START";
+export const UPDATING_SMURF_SUCCESS = "UPDATING_SMURF_SUCCESS";
+export const UPDATING_SMURF_FAILURE = "UPDATING_SMURF_FAILURE";
 
-// export const DELETING_SMURF_START = "DELETING_SMURF_START";
-// export const DELETING_SMURF_SUCCESS = "DELETING_SMURF_SUCCESS";
-// export const DELETING_SMURF_FAILURE = "DELETING_SMURF_FAILURE";
+export const DELETING_SMURF_START = "DELETING_SMURF_START";
+export const DELETING_SMURF_SUCCESS = "DELETING_SMURF_SUCCESS";
+export const DELETING_SMURF_FAILURE = "DELETING_SMURF_FAILURE";
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -58,3 +59,33 @@ export const addSmurf = (smurf = dispatch => {
       dispatch({ type: ADDING_SMURF_FAILURE, payload: err.response });
     });
 });
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({ type: DELETING_SMURF_START });
+  return axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      dispatch({
+        type: DELETING_SMURF_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: DELETING_SMURF_FAILURE, payload: err.response });
+    });
+};
+
+export const updateSmurf = (id, smurf) => dispatch => {
+  dispatch({ type: UPDATING_SMURF_START });
+  return axios
+    .put(`http://localhost:3333/smurfs/${id}`, smurf)
+    .then(res => {
+      dispatch({
+        type: UPDATING_SMURF_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATING_SMURF_SUCCESS, payload: err.response });
+    });
+};
