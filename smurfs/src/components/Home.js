@@ -1,6 +1,7 @@
 import React from "react";
 
-import smurfstitle from "./smurfstitle.png";
+import TheSmurfs from "./TheSmurfs.png";
+
 import "./App.css";
 
 function Home(props) {
@@ -11,7 +12,7 @@ function Home(props) {
 
   return (
     <div className="smurf-home">
-      <img src={smurfstitle} alt="smurf title card" />
+      <img src={TheSmurfs} alt="smurf title card" />
       <button onClick={routeToList}>List Them Smurfs!</button>
     </div>
   );
